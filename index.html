@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fjann Kristen · Musik</title>
+<meta name="description" content="Hör rein, folge mir und schreib mir. Alle Links zu Spotify, Apple Music, YouTube und mehr.">
+<meta name="theme-color" content="#edebf5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12101d" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%2317142b'/%3E%3Ccircle cx='32' cy='32' r='20' fill='none' stroke='%23ffffff' stroke-opacity='.25' stroke-width='1.5'/%3E%3Ccircle cx='32' cy='32' r='11' fill='%232c3bd6'/%3E%3C/svg%3E">
+
+<!-- website made for Fjann Kristen by Raphael Just ;) -->
+
+<!-- vorswchau für link -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Fjann Kristen · Musik">
+<meta property="og:description" content="Hör rein, folge mir und schreib mir. Alle Links zu Spotify, Apple Music, YouTube und mehr.">
+<meta name="twitter:card" content="summary">
+<!-- Vorschaubild: erst eintragen, wenn die Seite online ist. Es braucht die volle Adresse des Bildes.
+<meta property="og:image" content="https://DEINE-DOMAIN.de/fjann_profilbild.jpg">
+-->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap">
+<style>
+  /*profilbild auf schallplatte, drunter die links, unten der kontakt. */
+  :root {
+    --bg: #edebf5;
+    --fg: #17142b;
+    --muted: #5b5876;
+    --line: #cfcbe3;
+    --card: #f8f7fc;
+    --accent: #2c3bd6;
+    --accent-fg: #ffffff;
+    --disc: #17142b;
+    --groove: rgba(255, 255, 255, 0.07);
+    --sheen: rgba(255, 255, 255, 0.3);
+    color-scheme: light;
+
+    --font-display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "DM Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12101d;
+      --fg: #f0eef9;
+      --muted: #a4a0c0;
+      --line: #2e2a47;
+      --card: #1b1830;
+      --accent: #98a3ff;
+      --accent-fg: #12101d;
+      --disc: #0b0a14;
+      --groove: rgba(255, 255, 255, 0.06);
+      --sheen: rgba(255, 255, 255, 0.26);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12101d;
+    --fg: #f0eef9;
+    --muted: #a4a0c0;
+    --line: #2e2a47;
+    --card: #1b1830;
+    --accent: #98a3ff;
+    --accent-fg: #12101d;
+    --disc: #0b0a14;
+    --groove: rgba(255, 255, 255, 0.06);
+    --sheen: rgba(255, 255, 255, 0.26);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    padding-block: 48px 40px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .page {
+    max-width: 440px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* schallplatte mit profilbild */
+  .disc {
+    position: relative;
+    width: min(86vw, 340px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--disc);
+    box-shadow: inset 0 0 0 3px var(--groove);
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .disc::before,
+  .disc::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+  }
+  .disc::before {
+    /* glatte ringe zwischen den rillen*/
+    background:
+      radial-gradient(circle closest-side, transparent 0 72%, var(--disc) 72% 73.5%, transparent 73.5% 84%, var(--disc) 84% 85.5%, transparent 85.5%),
+      repeating-radial-gradient(circle at center, var(--groove) 0 1px, transparent 1px 5px);
+  }
+  .disc::after {
+    background: conic-gradient(from 0deg, transparent 0 18%, var(--sheen) 25%, transparent 32% 68%, var(--sheen) 75%, transparent 82%);
+    animation: spin 12s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .avatar {
+    position: relative;
+    z-index: 1;
+    width: 58%;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--disc);
+    background: var(--card);
+  }
+
+  .intro { text-align: center; display: flex; flex-direction: column; gap: 6px; }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .tagline { margin: 0; color: var(--muted); text-wrap: balance; }
+
+  /* Links */
+  .links { width: 100%; display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--card);
+    color: var(--fg);
+    text-decoration: none;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .link .name { font-family: var(--font-display); font-weight: 500; font-size: 1.125rem; }
+  .link .handle {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+  .link .arrow { flex: none; color: var(--accent); font-family: var(--font-mono); }
+  .link .meta { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  .link:hover { border-color: var(--accent); transform: translateY(-2px); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* Kontakt */
+  .contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+  }
+  .label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .mail {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    overflow-wrap: anywhere;
+    user-select: all;
+  }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    font: inherit;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-fg); }
+  .btn-ghost { background: transparent; color: var(--accent); }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-ghost:hover { background: var(--card); }
+
+  footer { color: var(--muted); font-size: 0.8125rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .disc::after { animation: none; }
+    .link { transition: none; }
+    .link:hover { transform: none; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="disc">
+    <img class="avatar" id="avatar" alt="Profilbild" width="197" height="197"
+      src="img1.jpg">
+  </div>
+
+  <header class="intro">
+    <h1>Fjann Kristen</h1>
+    <p class="tagline">WORK IN PROGRESS</p>
+  </header>
+
+  <ul class="links">
+    <li><a class="link" href="https://open.spotify.com/artist/16lyDPMbpiQqzi3NgAcbjm?si=2444f4109f42473a" target="_blank" rel="noopener">
+      <span class="name">Spotify</span>
+      <span class="meta"><span class="handle">Fjann Kristen</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+    <li><a class="link" href="https://music.apple.com/de/artist/fjann-kristen/1821548514" target="_blank" rel="noopener">
+      <span class="name">Apple Music</span>
+      <span class="meta"><span class="handle">Fjann Kristen</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+    <li><a class="link" href="#" target="_blank" rel="noopener">
+      <span class="name">YouTube</span>
+      <span class="meta"><span class="handle">@FjannKristen</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+    <li><a class="link" href="https://soundcloud.com/fjann" target="_blank" rel="noopener">
+      <span class="name">SoundCloud</span>
+      <span class="meta"><span class="handle">Fjann Kristen</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+    <li><a class="link" href="https://www.instagram.com/fjann_krstn/" target="_blank" rel="noopener">
+      <span class="name">Instagram</span>
+      <span class="meta"><span class="handle">@fjann_krstn</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+    <li><a class="link" href="https://www.tiktok.com/@fjann.kristen" target="_blank" rel="noopener">
+      <span class="name">TikTok</span>
+      <span class="meta"><span class="handle">@fjann.kristen</span><span class="arrow" aria-hidden="true">→</span></span>
+    </a></li>
+  </ul>
+
+  <section class="contact" aria-labelledby="kontakt-titel">
+    <h2 class="label" id="kontakt-titel">Kontakt &amp; Booking</h2>
+    <p class="mail" id="mail">contact.fjannkristen@gmail.com</p>
+    <div class="actions">
+      <a class="btn btn-primary" id="mailto" href="mailto:contact.fjannkristen@gmail.com">E-Mail schreiben</a>
+      <button class="btn btn-ghost" id="copy" type="button">Adresse kopieren</button>
+    </div>
+  </section>
+
+  <footer>© 2026 Fjann Kristen</footer>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById("copy");
+    var mail = document.getElementById("mail");
+    var original = btn.textContent;
+    btn.addEventListener("click", function () {
+      var text = mail.textContent.trim();
+      function done() {
+        btn.textContent = "Kopiert";
+        setTimeout(function () { btn.textContent = original; }, 1800);
+      }
+      function fallback() {
+        var range = document.createRange();
+        range.selectNodeContents(mail);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+      try {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } catch (e) {
+        fallback();
+      }
+    });
+  })();
+</script>
+</body>
+</html>
