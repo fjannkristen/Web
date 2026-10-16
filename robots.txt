@@ -1,0 +1,17 @@
+<link rel="canonical" href="https://DEINE-DOMAIN.de/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Fjann Kristen",
+  "url": "https://DEINE-DOMAIN.de/",
+  "image": "https://DEINE-DOMAIN.de/fjann_profilbild.jpg",
+  "sameAs": [
+    "https://open.spotify.com/artist/16lyDPMbpiQqzi3NgAcbjm",
+    "https://music.apple.com/de/artist/fjann-kristen/1821548514",
+    "https://soundcloud.com/fjann",
+    "https://www.instagram.com/fjann_krstn/",
+    "https://www.tiktok.com/@fjann.kristen"
+  ]
+}
+</script>
